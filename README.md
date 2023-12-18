@@ -140,7 +140,7 @@ Board>$ ./<binary_name>
 
 ## License
 
-Details about the terms under which various components are licensed are available [here](LICENSE.md)
+Details about the terms under which various components are licensed are available [here](LICENSES.html)
 
 ## Release notes
 
