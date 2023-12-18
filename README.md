@@ -10,7 +10,7 @@ Detailed User Guide "X-LINUX-GNSS1 package for developing GNSS Applications on L
 
 **The META-ST-X-LINUX-GNSS1** is a Yocto Recipe for GNSS and IMU application for OpenSTLinux for STM32MP157F-DK2 Board.This recipe provides the Yocto Recipes for GNSS , RTK (Real-time kinematic) Library using X-STM32MP-GNSS1 board plugged to the 40 Pin Connector of the STM32MP157F-DK2 Discovery Board .
 
-![META-ST-X-LINUX-GNSS1 Package](/_htmresc/01_META-ST-X-LINUX-GNSS1-package.png "META-ST-X-LINUX-GNSS1 Package")
+
 
 ## Description
 
