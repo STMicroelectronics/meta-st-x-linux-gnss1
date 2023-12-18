@@ -1,0 +1,6 @@
+
+cd /RTKLIB_Touchscreen_GUI/RTKBASE/
+. /etc/profile.d/weston_profile.sh
+./RTKBASE  
+
+

@@ -1,0 +1,14 @@
+Application:
+    Name: RTKLIB
+    Description: preview
+    Icon: application/splash.png
+    Board:
+        List: all
+    Type: script
+    Script:
+        Start: /bin/rtklib-run
+    Action:
+        button_release_event: script_management
+        button_press_event: highlight_eventBox
+
+
