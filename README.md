@@ -28,60 +28,49 @@ for meta-st-x-linux-gnss1  : The Yocto recipe creates the gnss_app application a
 for meta-st-x-linux-gnss1-rtklib  : The Yocto recipe creates the RTK lib application along with the QT based application as a part of system image which can be flashed to the STM32MPU
 
 ### X-LINUX-GNSS1 Package Structure:
+```
 ---meta-st-x-linux-gnss1
-   ¦   LICENSES.html
-   ¦   README.md
-   ¦   Release_Notes.md
-   ¦
-   +---Layers
-   ¦   +---meta-st-x-linux-gnss1
-   ¦   ¦   ¦   README.md
-   ¦   ¦   ¦
-   ¦   ¦   +---meta-gnss1
-   ¦   ¦       ¦   COPYING.MIT
-   ¦   ¦       ¦
-   ¦   ¦       +---conf
-   ¦   ¦       ¦       layer.conf
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-gnss1
-   ¦   ¦       ¦   +---gnss1(recipe file for gnss app)
-   ¦   ¦       ¦           gnss1_0.1.bb
-   ¦   ¦       ¦           gnss1_0.1.bbappend
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-kernel
-   ¦   ¦           +---linux
-   ¦   ¦               ¦   linux-stm32mp_%.bbappend
-   ¦   ¦               ¦
-   ¦   ¦               +---linux-stm32mp
-   ¦   ¦                   +---stm32mp1
-   ¦   ¦                       ¦   -Kernel patches
-   ¦   ¦                       ¦
-   ¦   ¦                       +---5.15
-   ¦   ¦                               fragment-07-X-STM32MP_full.config
-   ¦   ¦
-   ¦   +---meta-st-x-linux-gnss1-rtklib
-   ¦       ¦   README.md
-   ¦       ¦
-   ¦       +---meta-gnss1-rtklib
-   ¦           +---conf
-   ¦           ¦       layer.conf
-   ¦           ¦
-   ¦           +---recipes-gnss1-rtklib
-   ¦           ¦   +---gnss1-rtklib
-   ¦           ¦       ¦   gnss1-rtklib_0.1.bb ( recipe file for RTK Lib)
-   ¦           ¦       ¦
-   ¦           ¦       +---files
-   ¦           ¦           ¦   rtklib_stm32mp1.patch
-   ¦           ¦           ¦
-   ¦           ¦           +---shell_scripts_icons
-   ¦           ¦                   -icons and logos
-   ¦           ¦
-   ¦           +---recipes-kernel
-   ¦               +---linux
-   ¦                   ¦   recipe files
-   ¦
-   +---_htmresc
-           -Logos
+â”œâ”€â”€ LICENSES.html
+â”œâ”€â”€ README.md
+â”œâ”€â”€ Release_Notes.md
+â””â”€â”€ Layers
+    â”œâ”€â”€ meta-st-x-linux-gnss1
+    â”‚   â”œâ”€â”€ README.md
+    â”‚   â”œâ”€â”€ meta-gnss1
+    â”‚   â”‚   â”œâ”€â”€ COPYING.MIT
+    â”‚   â”‚   â”œâ”€â”€ conf
+    â”‚   â”‚   â”‚   â””â”€â”€ layer.conf
+    â”‚   â”‚   â”œâ”€â”€ recipes-gnss1
+    â”‚   â”‚   â”‚   â”œâ”€â”€ gnss1(recipe file for gnss app)
+    â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ gnss1_0.1.bb
+    â”‚   â”‚   â”‚   â”‚   â””â”€â”€ gnss1_0.1.bbappend
+    â”‚   â”‚   â”‚   â””â”€â”€ recipes-kernel
+    â”‚   â”‚   â”‚       â””â”€â”€ linux
+    â”‚   â”‚   â”‚           â”œâ”€â”€ linux-stm32mp_%.bbappend
+    â”‚   â”‚   â”‚           â””â”€â”€ linux-stm32mp
+    â”‚   â”‚   â”‚               â””â”€â”€ stm32mp1
+    â”‚   â”‚   â”‚                   â”œâ”€â”€ Kernel patches
+    â”‚   â”‚   â”‚                   â””â”€â”€ 5.15
+    â”‚   â”‚   â”‚                       â””â”€â”€ fragment-07-X-STM32MP_full.config
+    â”‚   â”‚   â””â”€â”€ README.md
+    â”‚   â””â”€â”€ meta-st-x-linux-gnss1-rtklib
+    â”‚       â”œâ”€â”€ README.md
+    â”‚       â””â”€â”€ meta-gnss1-rtklib
+    â”‚           â”œâ”€â”€ conf
+    â”‚           â”‚   â””â”€â”€ layer.conf
+    â”‚           â”œâ”€â”€ recipes-gnss1-rtklib
+    â”‚           â”‚   â””â”€â”€ gnss1-rtklib
+    â”‚           â”‚       â”œâ”€â”€ gnss1-rtklib_0.1.bb ( recipe file for RTK Lib)
+    â”‚           â”‚       â””â”€â”€ files
+    â”‚           â”‚           â”œâ”€â”€ rtklib_stm32mp1.patch
+    â”‚           â”‚           â””â”€â”€ shell_scripts_icons
+    â”‚           â”‚               -icons and logos
+    â”‚           â””â”€â”€ recipes-kernel
+    â”‚               â””â”€â”€ linux
+    â”‚                   -recipe files
+    â””â”€â”€ _htmresc
+        -Logos
+```
            
 ## Hardware Setup:
 
@@ -95,7 +84,7 @@ The section describes the software setup that is required for building, flashing
 
 ### Recommended PC prerequisites
 
-A Linux® PC running Ubuntu® 20.04 or 22.04 is recommended. Developers can follow the link below for details.
+A LinuxÂ® PC running UbuntuÂ® 20.04 or 22.04 is recommended. Developers can follow the link below for details.
 https://wiki.st.com/stm32mpu/wiki/PC_prerequisites
 
 Follow the instructions on the ST wiki page [Image flashing](https://wiki.st.com/stm32mpu/wiki/STM32MP15_Discovery_kits_-_Starter_Package#Image_flashing) to prepare a bootable SD card with the starter package.  
@@ -124,9 +113,9 @@ The resources can be transferred via any of the following methods:
 1. **Using a network connection**
 
 Refer to [How to Transfer a File Over a Network](https://wiki.st.com/stm32mpu/wiki/How_to_transfer_a_file_over_network)
- 
+Â 
 To connect the MPU board to a network, you may connect it to a wired network via the Ethernet jack on the MPU board.  
- 
+Â 
 **OR**  
 
 To connect to a WLAN, refer to [How to Setup a WLAN Connection"](https://wiki.st.com/stm32mpu/wiki/How_to_setup_a_WLAN_connection)
