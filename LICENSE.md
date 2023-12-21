@@ -1,0 +1,1 @@
+All the Licesnes information are available in LICENSES.html
