@@ -30,6 +30,8 @@ for meta-st-x-linux-gnss1-rtklib  : The Yocto recipe creates the RTK lib applica
 for meta-st-x-linux-gnss1-ekf  : The Yocto recipe creates ekf commandline application as a part of system image which can be flashed to the STM32MPU
 
 ### X-LINUX-GNSS1 Package Structure:
+
+```
 ---meta-st-x-linux-gnss1
    ¦   LICENSES.html
    ¦   README.md
@@ -99,6 +101,8 @@ for meta-st-x-linux-gnss1-ekf  : The Yocto recipe creates ekf commandline applic
    +---¦ _htmresc
        ¦     -Logos
        ¦    
+
+   ```    
 ## Hardware Setup:
 
 The current package provides software support for the following boards
