@@ -12,8 +12,6 @@ Detailed User Guide "X-LINUX-GNSS1 package for developing GNSS Applications on L
 
 **The META-ST-X-LINUX-GNSS1** is a Yocto Recipe for GNSS and IMU application for OpenSTLinux for STM32MP157F-DK2 Board.This recipe provides the Yocto Recipes for GNSS , RTK (Real-time kinematic) Library using X-STM32MP-GNSS1 board plugged to the 40 Pin Connector of the STM32MP157F-DK2 Discovery Board .
 
-![META-ST-X-LINUX-GNSS1 Package](/_htmresc/01_META-ST-X-LINUX-GNSS1-package.png "META-ST-X-LINUX-GNSS1 Package")
-
 ## Description
 
 ### META-ST-X-LINUX-GNSS1 software features:
@@ -33,74 +31,74 @@ for meta-st-x-linux-gnss1-ekf  : The Yocto recipe creates ekf commandline applic
 
 ### X-LINUX-GNSS1 Package Structure:
 ---meta-st-x-linux-gnss1
-   ¦   LICENSES.html
-   ¦   README.md
-   ¦   Release_Notes.md
-   ¦
+   Â¦   LICENSES.html
+   Â¦   README.md
+   Â¦   Release_Notes.md
+   Â¦
    +---Layers
-   ¦   +---meta-st-x-linux-gnss1
-   ¦   ¦   ¦   README.md
-   ¦   ¦   ¦
-   ¦   ¦   +---meta-gnss1
-   ¦   ¦       ¦   COPYING.MIT
-   ¦   ¦       ¦
-   ¦   ¦       +---conf
-   ¦   ¦       ¦       layer.conf
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-gnss1
-   ¦   ¦       ¦   +---gnss1(recipe file for gnss app)
-   ¦   ¦       ¦           gnss1_0.1.bb
-   ¦   ¦       ¦           gnss1_0.1.bbappend
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-kernel
-   ¦   ¦           +---linux
-   ¦   ¦               ¦   linux-stm32mp_%.bbappend
-   ¦   ¦               ¦
-   ¦   ¦               +---linux-stm32mp
-   ¦   ¦                   +---stm32mp1
-   ¦   ¦                       ¦   -Kernel patches
-   ¦   ¦                       ¦
-   ¦   ¦                       +---5.15
-   ¦   ¦                               fragment-07-X-STM32MP_full.config
-   ¦   ¦
-   ¦   +---meta-st-x-linux-gnss1-rtklib
-   ¦   ¦   ¦   README.md
-   ¦   ¦   ¦
-   ¦   ¦   +---meta-gnss1-rtklib
-   ¦   ¦       +---conf
-   ¦   ¦       ¦       layer.conf
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-gnss1-rtklib
-   ¦   ¦       ¦   +---gnss1-rtklib
-   ¦   ¦       ¦       ¦   gnss1-rtklib_0.1.bb ( recipe file for RTK Lib)
-   ¦   ¦       ¦       ¦
-   ¦   ¦       ¦       +---files
-   ¦   ¦       ¦           ¦   rtklib_stm32mp1.patch
-   ¦   ¦       ¦           ¦
-   ¦   ¦       ¦           +---shell_scripts_icons
-   ¦   ¦       ¦                   -icons and logos
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-kernel
-   ¦   ¦           +---linux
-   ¦   ¦                   -recipe files
-   ¦   ¦ 
-   ¦   +---meta-st-x-linux-gnss1-ekf
-   ¦   ¦   ¦   README.md
-   ¦   ¦   ¦
-   ¦   ¦   +---meta-gnss1-ekf
-   ¦   ¦       +---conf
-   ¦   ¦       ¦       layer.conf
-   ¦   ¦       ¦
-   ¦   ¦       +---recipes-gnss1-ekf
-   ¦   ¦           +---gnss1-ekf
-   ¦   ¦               ¦   gnss1-ekf_0.1.bb ( recipe file for ekf cmdline app)
-   ¦   ¦               ¦
-   ¦   ¦               +---files
-   ¦   ¦                 -ekf patch and python scripts for visualization
-   ¦   ¦  
-   +---¦ _htmresc
-       ¦     -Logos
-       ¦    
+   Â¦   +---meta-st-x-linux-gnss1
+   Â¦   Â¦   Â¦   README.md
+   Â¦   Â¦   Â¦
+   Â¦   Â¦   +---meta-gnss1
+   Â¦   Â¦       Â¦   COPYING.MIT
+   Â¦   Â¦       Â¦
+   Â¦   Â¦       +---conf
+   Â¦   Â¦       Â¦       layer.conf
+   Â¦   Â¦       Â¦
+   Â¦   Â¦       +---recipes-gnss1
+   Â¦   Â¦       Â¦   +---gnss1(recipe file for gnss app)
+   Â¦   Â¦       Â¦           gnss1_0.1.bb
+   Â¦   Â¦       Â¦           gnss1_0.1.bbappend
+   Â¦   Â¦       Â¦
+   Â¦   Â¦       +---recipes-kernel
+   Â¦   Â¦           +---linux
+   Â¦   Â¦               Â¦   linux-stm32mp_%.bbappend
+   Â¦   Â¦               Â¦
+   Â¦   Â¦               +---linux-stm32mp
+   Â¦   Â¦                   +---stm32mp1
+   Â¦   Â¦                       Â¦   -Kernel patches
+   Â¦   Â¦                       Â¦
+   Â¦   Â¦                       +---5.15
+   Â¦   Â¦                               fragment-07-X-STM32MP_full.config
+   Â¦   Â¦
+   Â¦   +---meta-st-x-linux-gnss1-rtklib
+   Â¦   Â¦   Â¦   README.md
+   Â¦   Â¦   Â¦
+   Â¦   Â¦   +---meta-gnss1-rtklib
+   Â¦   Â¦       +---conf
+   Â¦   Â¦       Â¦       layer.conf
+   Â¦   Â¦       Â¦
+   Â¦   Â¦       +---recipes-gnss1-rtklib
+   Â¦   Â¦       Â¦   +---gnss1-rtklib
+   Â¦   Â¦       Â¦       Â¦   gnss1-rtklib_0.1.bb ( recipe file for RTK Lib)
+   Â¦   Â¦       Â¦       Â¦
+   Â¦   Â¦       Â¦       +---files
+   Â¦   Â¦       Â¦           Â¦   rtklib_stm32mp1.patch
+   Â¦   Â¦       Â¦           Â¦
+   Â¦   Â¦       Â¦           +---shell_scripts_icons
+   Â¦   Â¦       Â¦                   -icons and logos
+   Â¦   Â¦       Â¦
+   Â¦   Â¦       +---recipes-kernel
+   Â¦   Â¦           +---linux
+   Â¦   Â¦                   -recipe files
+   Â¦   Â¦ 
+   Â¦   +---meta-st-x-linux-gnss1-ekf
+   Â¦   Â¦   Â¦   README.md
+   Â¦   Â¦   Â¦
+   Â¦   Â¦   +---meta-gnss1-ekf
+   Â¦   Â¦       +---conf
+   Â¦   Â¦       Â¦       layer.conf
+   Â¦   Â¦       Â¦
+   Â¦   Â¦       +---recipes-gnss1-ekf
+   Â¦   Â¦           +---gnss1-ekf
+   Â¦   Â¦               Â¦   gnss1-ekf_0.1.bb ( recipe file for ekf cmdline app)
+   Â¦   Â¦               Â¦
+   Â¦   Â¦               +---files
+   Â¦   Â¦                 -ekf patch and python scripts for visualization
+   Â¦   Â¦  
+   +---Â¦ _htmresc
+       Â¦     -Logos
+       Â¦    
 ## Hardware Setup:
 
 The current package provides software support for the following boards
@@ -113,7 +111,7 @@ The section describes the software setup that is required for building, flashing
 
 ### Recommended PC prerequisites
 
-A Linux® PC running Ubuntu® 20.04 or 22.04 is recommended. Developers can follow the link below for details.
+A LinuxÂ® PC running UbuntuÂ® 20.04 or 22.04 is recommended. Developers can follow the link below for details.
 https://wiki.st.com/stm32mpu/wiki/PC_prerequisites
 
 Follow the instructions on the ST wiki page [Image flashing](https://wiki.st.com/stm32mpu/wiki/STM32MP15_Discovery_kits_-_Starter_Package#Image_flashing) to prepare a bootable SD card with the starter package.  
@@ -142,9 +140,9 @@ The resources can be transferred via any of the following methods:
 1. **Using a network connection**
 
 Refer to [How to Transfer a File Over a Network](https://wiki.st.com/stm32mpu/wiki/How_to_transfer_a_file_over_network)
- 
+Â 
 To connect the MPU board to a network, you may connect it to a wired network via the Ethernet jack on the MPU board.  
- 
+Â 
 **OR**  
 
 To connect to a WLAN, refer to [How to Setup a WLAN Connection"](https://wiki.st.com/stm32mpu/wiki/How_to_setup_a_WLAN_connection)
