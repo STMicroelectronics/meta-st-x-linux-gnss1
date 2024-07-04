@@ -1,4 +1,4 @@
-META-ST-X-LINUX_GNSS1_V1.3.0 :
+# META-ST-X-LINUX_GNSS1_V1.3.0 :
 
 ![latest tag](https://img.shields.io/github/v/tag/STMicroelectronics/meta-st-x-linux-gnss1.svg?color=brightgreen)
 ==============================================================================================================
