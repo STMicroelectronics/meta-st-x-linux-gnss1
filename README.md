@@ -1,4 +1,4 @@
-META-ST-X-LINUX_GNSS1_V1.2.0 :
+META-ST-X-LINUX_GNSS1_V1.3.0 :
 
 ![latest tag](https://img.shields.io/github/v/tag/STMicroelectronics/meta-st-x-linux-gnss1.svg?color=brightgreen)
 ==============================================================================================================
@@ -6,13 +6,13 @@ The META-ST-X-LINUX-GNSS1 is a Yocto Recipe for GNSS and IMU application for Ope
 Detailed User Guide "X-LINUX-GNSS1 package for developing GNSS Applications on Linux" can be foudn here  : https://www.st.com/resource/en/user_manual/um2909-getting-started-with-xlinuxgnss1-package-for-developing-gnss-applications-on-linux-os-stmicroelectronics.pdf"
 
 
-# META-ST-X-LINUX-GNSS1 V1.2.0 Linux Package
+# META-ST-X-LINUX-GNSS1 V1.3.0 Linux Package
 
 ## Introduction
 
 **The META-ST-X-LINUX-GNSS1** is a Yocto Recipe for GNSS and IMU application for OpenSTLinux for STM32MP157F-DK2 Board.This recipe provides the Yocto Recipes for GNSS , RTK (Real-time kinematic) Library using X-STM32MP-GNSS1 board plugged to the 40 Pin Connector of the STM32MP157F-DK2 Discovery Board .
 
-
+![META-ST-X-LINUX-GNSS1 Package](/_htmresc/01_META-ST-X-LINUX-GNSS1-package.png "META-ST-X-LINUX-GNSS1 Package")
 
 ## Description
 
@@ -22,58 +22,85 @@ Its main feature are :
 
 meta-st-x-linux-gnss1: Yocto Recipe for Reading NMEA GNSS data and enabling IMU and Environmental Sensors
 meta-st-x-linux-gnss1-rtklib : Yocto Recipe for Enabling Real Time Kinematics (RTK) data using RTCM Messages on Teseo-LIV3F module board
+meta-st-x-linux-gnss1-ekf : Yocto Recipe for Enabling IMU +GNSS fusion using EKF.
 
 ### META-ST-X-LINUX-GNSS1 Architecture:
 
 The software uses the OpenSTLinux UART and I2C Driver to interact with the Teseo-LIV3FL GNSS modules on X-STM32MP-GNSS1 board.
 for meta-st-x-linux-gnss1  : The Yocto recipe creates the gnss_app application as a part of system image which can be flashed to the STM32MPU 
 for meta-st-x-linux-gnss1-rtklib  : The Yocto recipe creates the RTK lib application along with the QT based application as a part of system image which can be flashed to the STM32MPU
+for meta-st-x-linux-gnss1-ekf  : The Yocto recipe creates ekf commandline application as a part of system image which can be flashed to the STM32MPU
 
 ### X-LINUX-GNSS1 Package Structure:
-```
 ---meta-st-x-linux-gnss1
-â”œâ”€â”€ LICENSES.html
-â”œâ”€â”€ README.md
-â”œâ”€â”€ Release_Notes.md
-â””â”€â”€ Layers
-    â”œâ”€â”€ meta-st-x-linux-gnss1
-    â”‚   â”œâ”€â”€ README.md
-    â”‚   â”œâ”€â”€ meta-gnss1
-    â”‚   â”‚   â”œâ”€â”€ COPYING.MIT
-    â”‚   â”‚   â”œâ”€â”€ conf
-    â”‚   â”‚   â”‚   â””â”€â”€ layer.conf
-    â”‚   â”‚   â”œâ”€â”€ recipes-gnss1
-    â”‚   â”‚   â”‚   â”œâ”€â”€ gnss1(recipe file for gnss app)
-    â”‚   â”‚   â”‚   â”‚   â”œâ”€â”€ gnss1_0.1.bb
-    â”‚   â”‚   â”‚   â”‚   â””â”€â”€ gnss1_0.1.bbappend
-    â”‚   â”‚   â”‚   â””â”€â”€ recipes-kernel
-    â”‚   â”‚   â”‚       â””â”€â”€ linux
-    â”‚   â”‚   â”‚           â”œâ”€â”€ linux-stm32mp_%.bbappend
-    â”‚   â”‚   â”‚           â””â”€â”€ linux-stm32mp
-    â”‚   â”‚   â”‚               â””â”€â”€ stm32mp1
-    â”‚   â”‚   â”‚                   â”œâ”€â”€ Kernel patches
-    â”‚   â”‚   â”‚                   â””â”€â”€ 5.15
-    â”‚   â”‚   â”‚                       â””â”€â”€ fragment-07-X-STM32MP_full.config
-    â”‚   â”‚   â””â”€â”€ README.md
-    â”‚   â””â”€â”€ meta-st-x-linux-gnss1-rtklib
-    â”‚       â”œâ”€â”€ README.md
-    â”‚       â””â”€â”€ meta-gnss1-rtklib
-    â”‚           â”œâ”€â”€ conf
-    â”‚           â”‚   â””â”€â”€ layer.conf
-    â”‚           â”œâ”€â”€ recipes-gnss1-rtklib
-    â”‚           â”‚   â””â”€â”€ gnss1-rtklib
-    â”‚           â”‚       â”œâ”€â”€ gnss1-rtklib_0.1.bb ( recipe file for RTK Lib)
-    â”‚           â”‚       â””â”€â”€ files
-    â”‚           â”‚           â”œâ”€â”€ rtklib_stm32mp1.patch
-    â”‚           â”‚           â””â”€â”€ shell_scripts_icons
-    â”‚           â”‚               -icons and logos
-    â”‚           â””â”€â”€ recipes-kernel
-    â”‚               â””â”€â”€ linux
-    â”‚                   -recipe files
-    â””â”€â”€ _htmresc
-        -Logos
-```
-           
+   ¦   LICENSES.html
+   ¦   README.md
+   ¦   Release_Notes.md
+   ¦
+   +---Layers
+   ¦   +---meta-st-x-linux-gnss1
+   ¦   ¦   ¦   README.md
+   ¦   ¦   ¦
+   ¦   ¦   +---meta-gnss1
+   ¦   ¦       ¦   COPYING.MIT
+   ¦   ¦       ¦
+   ¦   ¦       +---conf
+   ¦   ¦       ¦       layer.conf
+   ¦   ¦       ¦
+   ¦   ¦       +---recipes-gnss1
+   ¦   ¦       ¦   +---gnss1(recipe file for gnss app)
+   ¦   ¦       ¦           gnss1_0.1.bb
+   ¦   ¦       ¦           gnss1_0.1.bbappend
+   ¦   ¦       ¦
+   ¦   ¦       +---recipes-kernel
+   ¦   ¦           +---linux
+   ¦   ¦               ¦   linux-stm32mp_%.bbappend
+   ¦   ¦               ¦
+   ¦   ¦               +---linux-stm32mp
+   ¦   ¦                   +---stm32mp1
+   ¦   ¦                       ¦   -Kernel patches
+   ¦   ¦                       ¦
+   ¦   ¦                       +---5.15
+   ¦   ¦                               fragment-07-X-STM32MP_full.config
+   ¦   ¦
+   ¦   +---meta-st-x-linux-gnss1-rtklib
+   ¦   ¦   ¦   README.md
+   ¦   ¦   ¦
+   ¦   ¦   +---meta-gnss1-rtklib
+   ¦   ¦       +---conf
+   ¦   ¦       ¦       layer.conf
+   ¦   ¦       ¦
+   ¦   ¦       +---recipes-gnss1-rtklib
+   ¦   ¦       ¦   +---gnss1-rtklib
+   ¦   ¦       ¦       ¦   gnss1-rtklib_0.1.bb ( recipe file for RTK Lib)
+   ¦   ¦       ¦       ¦
+   ¦   ¦       ¦       +---files
+   ¦   ¦       ¦           ¦   rtklib_stm32mp1.patch
+   ¦   ¦       ¦           ¦
+   ¦   ¦       ¦           +---shell_scripts_icons
+   ¦   ¦       ¦                   -icons and logos
+   ¦   ¦       ¦
+   ¦   ¦       +---recipes-kernel
+   ¦   ¦           +---linux
+   ¦   ¦                   -recipe files
+   ¦   ¦ 
+   ¦   +---meta-st-x-linux-gnss1-ekf
+   ¦   ¦   ¦   README.md
+   ¦   ¦   ¦
+   ¦   ¦   +---meta-gnss1-ekf
+   ¦   ¦       +---conf
+   ¦   ¦       ¦       layer.conf
+   ¦   ¦       ¦
+   ¦   ¦       +---recipes-gnss1-ekf
+   ¦   ¦           +---gnss1-ekf
+   ¦   ¦               ¦   gnss1-ekf_0.1.bb ( recipe file for ekf cmdline app)
+   ¦   ¦               ¦
+   ¦   ¦               +---files
+   ¦   ¦                 -ekf patch and python scripts for visualization
+   ¦   ¦  
+   +---¦ _htmresc
+       ¦     -Logos
+       ¦    
 ## Hardware Setup:
 
 The current package provides software support for the following boards
@@ -86,7 +113,7 @@ The section describes the software setup that is required for building, flashing
 
 ### Recommended PC prerequisites
 
-A LinuxÂ® PC running UbuntuÂ® 20.04 or 22.04 is recommended. Developers can follow the link below for details.
+A Linux® PC running Ubuntu® 20.04 or 22.04 is recommended. Developers can follow the link below for details.
 https://wiki.st.com/stm32mpu/wiki/PC_prerequisites
 
 Follow the instructions on the ST wiki page [Image flashing](https://wiki.st.com/stm32mpu/wiki/STM32MP15_Discovery_kits_-_Starter_Package#Image_flashing) to prepare a bootable SD card with the starter package.  
@@ -115,9 +142,9 @@ The resources can be transferred via any of the following methods:
 1. **Using a network connection**
 
 Refer to [How to Transfer a File Over a Network](https://wiki.st.com/stm32mpu/wiki/How_to_transfer_a_file_over_network)
-Â 
+ 
 To connect the MPU board to a network, you may connect it to a wired network via the Ethernet jack on the MPU board.  
-Â 
+ 
 **OR**  
 
 To connect to a WLAN, refer to [How to Setup a WLAN Connection"](https://wiki.st.com/stm32mpu/wiki/How_to_setup_a_WLAN_connection)

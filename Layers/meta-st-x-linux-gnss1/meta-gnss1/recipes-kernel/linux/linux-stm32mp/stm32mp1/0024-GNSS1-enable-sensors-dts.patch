@@ -1,29 +1,13 @@
-diff --git a/arch/arm/boot/dts/stm32mp131.dtsi b/arch/arm/boot/dts/stm32mp131.dtsi
-index 8121ddc97..e658da205 100644
---- a/arch/arm/boot/dts/stm32mp131.dtsi
-+++ b/arch/arm/boot/dts/stm32mp131.dtsi
-@@ -1476,7 +1476,7 @@ sdmmc2: mmc@58007000 {
- 			cap-sd-highspeed;
- 			cap-mmc-highspeed;
- 			max-frequency = <130000000>;
--			status = "disabled";
-+			status = "okay";
- 		};
- 
- 		crc1: crc@58009000 {
 diff --git a/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi b/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
-index 58bb9eca8..5e840a4c8 100644
+index b1f02b092..933b4c78e 100644
 --- a/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
 +++ b/arch/arm/boot/dts/stm32mp15xx-dkx.dtsi
-@@ -473,7 +473,96 @@ &i2c5 {
+@@ -465,7 +465,93 @@ &i2c5 {
  	/* spare dmas for other usage */
  	/delete-property/dmas;
  	/delete-property/dma-names;
-+/*LK
- 	status = "disabled";
-+*/
-+
-+    status = "okay";
+-	status = "disabled";
++	status = "okay";
 +	    /*
 +     * X-STM32MP-MSP0
 +     *
@@ -109,10 +93,11 @@ index 58bb9eca8..5e840a4c8 100644
 +        status = "okay";
 +    };
 +
++
  };
  
  &i2s2 {
-@@ -721,22 +810,22 @@ &uart4 {
+@@ -700,22 +786,22 @@ &uart4 {
  };
  
  &uart7 {

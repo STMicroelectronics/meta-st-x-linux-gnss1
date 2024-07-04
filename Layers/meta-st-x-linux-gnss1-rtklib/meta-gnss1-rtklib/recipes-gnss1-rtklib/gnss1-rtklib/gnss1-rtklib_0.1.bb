@@ -36,7 +36,10 @@ TARGET_CC_ARCH += "${LDFLAGS}"
 #specify any options you want to pass to cmake using EXTRA_OECMAKE:
 #EXTRA_OECMAKE = ""
 
-inherit pkgconfig qmake5
+inherit pkgconfig qmake5 autotools
+#inherit gettext autotools-brokensep
+
+#EXTRA_OEMAKE = "CFLAGS='${CFLAGS}' CC=${CC} CXX=${CXX} AR=${AR} -pipe  -O2 -pipe -g -feliminate-unused-debug-types -ansi -pedantic -Wall -Wextra -D_REENTRANT -fPIC "
 
 do_patch(){
 	cd ${WORKDIR}/git
@@ -45,16 +48,20 @@ do_patch(){
 do_configure(){
     cd ${WORKDIR}/git/RTKBASE/
     ${STAGING_BINDIR_NATIVE}/${QT_DIR_NAME}/qmake
-    cd ${WORKDIR}/git/RTKBASE/lib/rtklib
-    ./make_library.sh
 }
 
 do_compile() {
-    export CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_HOST}"
+   export CFLAGS="${CFLAGS} --sysroot=${STAGING_DIR_HOST} -pipe  -O2 -pipe -g -feliminate-unused-debug-types -ansi -pedantic -Wall -Wextra -D_REENTRANT -fPIC "
+   export STRIP="${STRIP}"
     cd ${WORKDIR}/git/RTKBASE/lib/rtklib
-    make all
-    ar rsc librtk.a src/*.o src/rcv/*.o
+    echo "cd ${WORKDIR}/git/RTKBASE/lib/rtklib"
+#    cd ${WORKDIR}/git/RTKBASE/lib/rtklib
+    ./make_library.sh
+#    oe_runmake
+     make
+#    ${AR} rsc librtk.a src/*.o src/rcv/*.o
     cd ${WORKDIR}/git/RTKBASE/
+    #oe_runmake
     make
 }
 
@@ -78,16 +85,6 @@ do_install:append() {
 	install -m 755 ${WORKDIR}/shell_scripts_icons/rtklib-run  ${D}/bin
 	install -m 755 ${WORKDIR}/shell_scripts_icons/080-rtklib.yaml  ${D}/usr/local/demo/application/
 	install -m 755 ${WORKDIR}/shell_scripts_icons/splash.png  ${D}/usr/local/demo/application/
-
-#	install -m 755 ${WORKDIR}/pictures/RS10670_Aereo-lpr.jpg  ${D}/usr/local/demo/pictures
-#	install -m 755 ${WORKDIR}/pictures/RS1760_MEMS_gyroscope_light_blue.png  ${D}/usr/local/demo/pictures/
-#	install -m 755 ${WORKDIR}/pictures/RS1762_MEMS_compass_light_blue.png  ${D}/usr/local/demo/pictures/
-#	install -m 755 ${WORKDIR}/pictures/RS6355_FORCE_PRESSURE_light_blue.png  ${D}/usr/local/demo/pictures/
-#	install -m 755 ${WORKDIR}/pictures/RS1069_climate_change_light_blue.png  ${D}/usr/local/demo/pictures
-#	install -m 755 ${WORKDIR}/pictures/RS1761_MEMS_accelerometer_light_blue.png ${D}/usr/local/demo/
-#	install -m 755 ${WORKDIR}/pictures/RS1902_humidity_light_blue.png ${D}/usr/local/demo/pictures
-#	install -m 755 ${WORKDIR}/pictures/RS70_ST_Logo_Qi.png ${D}/usr/local/demo/pictures
-#
 }
 
 #FILES:${PN} += "/usr/local/demo/pictures"
@@ -103,6 +100,7 @@ INSANE_SKIP:${PN} += "file-rdeps"
 INSANE_SKIP:${PN} += "arch"
 INSANE_SKIP:${PN} += "ldflags"
  
-RDEPENDS:${PN} += "python3-core glibc qtlocation qt3d qtbase gnss1"
+#RDEPENDS:${PN} += "python3-core glibc qtlocation qt3d qtbase"
+RDEPENDS:${PN} += "python3-core glibc qtbase qtlocation qt3d"
 
 FILES_SOLIBDEV = ""
