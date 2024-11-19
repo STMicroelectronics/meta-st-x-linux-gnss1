@@ -1,5 +1,12 @@
 # Release Notes
 
+### V 1.4.0 (October 2024)
+- STM32MP257F-EV1 support(STM32MP2)
+- EKF Support for X-STM32MP-GNSS2 Board
+- ported to 5.1.0 OpenSTLinux
+- RTKLIB Application is not tested/supported in this version
+
+
 ### V 1.3.0 (13th March 2024)
 - Ported to IMU and environmental sensors , RTK library to mickeldore and linux kernel 6.1
 - Added Extended Kalman Filter(EKF) application for GNSS+IMU fusion for better accuracy
@@ -9,6 +16,7 @@
 -Aligned with STM32 MPU OpenSTLinux v4.1.0
 -Added Yocto Recipe for Enabling IMU and Enviromental Sensors Support
 -Added Yocto Recipe for RTK Library and its QT Application running on Wayland
+
 ### V 1.1.0 (25th November 2022)
 -Aligned with STM32 MPU OpenSTLinux v4.0.0
 -Added Support for X-NUCLEO-GNSS2A1

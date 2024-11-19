@@ -1,13 +1,15 @@
-SUMMARY = "gnss1-ekf application uses GPS+IMU data ane EKF filter for better accuracy"
+SUMMARY = "gnss1-ekf application uses GPS+IMU data and EKF filter for better accuracy"
 
 LICENSE = "CLOSED"
 
 SRC_URI += " gitsm://github.com/balamuruganky/EKF_IMU_GPS.git;protocol=https;branch=master \
-	   file://ekf_support.patch \
-	   file://run_ekf.sh \
+	   file://ekf_mickledore.patch \
+	   file://run_ekf_gnss1.sh \
+	   file://run_ekf_gnss2.sh \
 	   file://stop_ekf.sh \
 	   file://arg_plot_coords.py \
 "
+#	   file://ekf_support.patch 
 SRCREV = "aa295addbeb4387fb274acf607965182e221ac5d"
 
 inherit cmake pkgconfig
@@ -16,7 +18,8 @@ do_patch(){
 	cd ${WORKDIR}/git
 	#git submodule update --init --recursive
 	#cd ${WORKDIR}/
-	git apply ../ekf_support.patch
+	#git apply ../ekf_support.patch
+	git apply  ../ekf_mickledore.patch
 }
 
 do_configure(){
@@ -44,7 +47,8 @@ do_install(){
 	install -d ${D}/usr/python_utils
 	install -m 0755 ${WORKDIR}/git/bin/ekf_gnss1_test ${D}${bindir}/
 	install -m 0755 ${WORKDIR}/git/lib/libekf_linux.so ${D}${libdir}/
-	install -m 0755 ${WORKDIR}/run_ekf.sh ${D}/${bindir}
+	install -m 0755 ${WORKDIR}/run_ekf_gnss1.sh ${D}/${bindir}
+	install -m 0755 ${WORKDIR}/run_ekf_gnss2.sh ${D}/${bindir}
 	install -m 0755 ${WORKDIR}/stop_ekf.sh ${D}/${bindir}
 	install -m 0755 ${WORKDIR}/arg_plot_coords.py ${D}/usr/python_utils/
 	#echo "ls {D}"
